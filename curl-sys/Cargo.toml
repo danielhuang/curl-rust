@@ -24,6 +24,19 @@ libz-sys = { version = "1.0.18", default-features = false, features = ["libc"] }
 libc = "0.2.2"
 libnghttp2-sys = { optional = true, version = "0.1.3" }
 
+[dependencies.mesalink]
+version = "1.1.0-cratesio"
+optional = true
+default-features = false
+features = ["client_apis", "error_strings", "tls13", "aesgcm", "chachapoly", "x25519", "ecdh", "ecdsa", "verifier"]
+
+[dependencies.quiche]
+git = "https://github.com/sagebind/quiche"
+branch = "include-metadata"
+optional = true
+default-features = false
+features = ["ffi"]
+
 [dependencies.rustls-ffi]
 version = "0.8"
 optional = true
@@ -47,6 +60,8 @@ default = ["ssl"]
 ssl = ["openssl-sys"]
 http2 = ["libnghttp2-sys"]
 mesalink = []
+http3-quiche = ["quiche"]
+http3-quiche-boringssl-vendored = ["quiche/boringssl-vendored"]
 rustls = ["rustls-ffi"]
 static-curl = []
 static-ssl = ["openssl-sys/vendored"]

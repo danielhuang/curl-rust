@@ -8,6 +8,8 @@ extern crate libnghttp2_sys;
 extern crate libz_sys;
 #[cfg(link_openssl)]
 extern crate openssl_sys;
+#[cfg(feature = "http3-quiche")]
+extern crate quiche;
 #[cfg(feature = "rustls")]
 extern crate rustls_ffi;
 
